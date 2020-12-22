@@ -9,6 +9,7 @@ public class ClienteTeste
 		Cliente cliente = new Cliente("Eduardo", 
 				EnumCliente.PESSOA_FISICA);
 		
-		System.out.println(cliente.toString());
+		//System.out.println(cliente.toString());
+		System.out.println(EnumCliente.PESSOA_JURIDICA.getId());
 	}
 }
