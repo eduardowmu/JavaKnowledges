@@ -22,7 +22,7 @@ public class WrappersTest
 		char charValue = 'A';
 		boolean booleanValue = true;
 		
-		//classes Wrapper
+		//classes Wrapper que encapsulam os tipos primitivos
 		Byte byteWrapper = 1;
 		Short shortWrapper = 1;
 		Integer intWrapper = 10;
