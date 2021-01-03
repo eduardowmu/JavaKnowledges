@@ -5,10 +5,10 @@ import java.util.regex.Pattern;
 
 public class RegexTeste 
 {	public static void main(String[] args) 
-	{	String texto = "abababa";
+	{	String texto = "bab1278abby_ hgaa92178";
 		
 		//queremos encontrar "ab" dentro da variável texto
-		String regex = "aba";
+		String regex = "\\W";
 		
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(texto);
@@ -20,6 +20,6 @@ public class RegexTeste
 		
 		//enquanto o matcher encontra padrão desse texto
 		while(matcher.find())
-		{System.out.println(matcher.start() + " ");}
+		{System.out.print(matcher.start() + " ");}
 	}
 }
