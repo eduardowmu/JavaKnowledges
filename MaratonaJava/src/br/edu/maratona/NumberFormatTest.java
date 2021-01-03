@@ -8,6 +8,8 @@ import java.util.Locale;
 public class NumberFormatTest 
 {	public static void main(String[] args) 
 	{	double valor = 123.4567;
+	
+		System.out.println(valor);
 		
 		//definindo tipos de moedas pelo país
 		Locale franca = new Locale("fr", "FR");
@@ -26,7 +28,7 @@ public class NumberFormatTest
 		
 		NumberFormat df = new DecimalFormat();
 		
-		String valorString = "123.4567";
+		String valorString = "123,4567";
 		//convertendo valor String numerico em double
 		try 
 		{	System.out.println(df.parse(valorString));
@@ -35,7 +37,5 @@ public class NumberFormatTest
 		} 
 		catch (ParseException e) 
 		{System.out.println(e.getMessage());}
-		
-		
 	}
 }
