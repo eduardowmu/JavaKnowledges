@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 
 public class RegexTeste 
 {	public static void main(String[] args) 
-	{	String texto = "bab1278abby_ hgaa92178";
+	{	//int numeroHex = 0xaff;
+		String texto = "12 0x 0X 0xFFABC 0x10G 0x1";
 		
 		//queremos encontrar "ab" dentro da variável texto
-		String regex = "\\W";
+		String regex = "0[xX][0-9a-fA-F]";
 		
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(texto);
@@ -20,6 +21,12 @@ public class RegexTeste
 		
 		//enquanto o matcher encontra padrão desse texto
 		while(matcher.find())
-		{System.out.print(matcher.start() + " ");}
+		{	//toda vez que encontrar um valor que esta no 
+			//regex, vai escrever
+			System.out.println("posição " + matcher.start() + 
+				": " + matcher.group());
+		}
+		
+		//System.out.println(numeroHex);
 	}
 }
