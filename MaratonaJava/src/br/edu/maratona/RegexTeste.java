@@ -9,7 +9,7 @@ public class RegexTeste
 		String texto = "12 0x 0X 0xFFABC 0x10G 0x1";
 		
 		//queremos encontrar "ab" dentro da variável texto
-		String regex = "0[xX][0-9a-fA-F]";
+		String regex = "0[xX]([0-9a-fA-F])+(\\s|$)";
 		
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(texto);
