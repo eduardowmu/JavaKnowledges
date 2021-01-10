@@ -14,7 +14,7 @@ public class RegexTeste
 		/*String texto = "fulano@hotmail.com, 102Abc@gmail.com, "
 			+ "*@!abrao@mail.br, teste@gmail.com.br, teste@mail";*/
 		
-		String texto = "05/10/2010 05/05/2015 1/1/01 01/05/95";
+		//String texto = "05/10/2010 05/05/2015 1/1/01 01/05/95";
 		
 		/*o ponto "." é um coringa usado em expressões
 		 *regulares, portanto devemos sempre usar "\\." 
@@ -22,8 +22,12 @@ public class RegexTeste
 		 *texto e não como caractere coringa*/
 		//String regex = "([a-zA-Z0-9\\._-])+@([a-zA-z])+(\\.([a-zA-z])+)+";
 		//String regex = "([\\w\\.])+@([a-zA-z])+(\\.([a-zA-z])+)+";
+	
+		String texto = "projeto1.bkp, proj1.java, proj1.class, "
+				+ "proj1final.java, proj2.bkp, proj3.java";
 		
-		String regex = "\\d{2}/\\d{2}/\\d{2,4}";
+		//queremos pegar tudo que comece com proj, mas...
+		String regex = "proj([^,])*";
 		
 		/*recomendável usar String*/
 		System.out.println("E-mail valido: "+"*@!abrao@mail.br".matches(regex));
