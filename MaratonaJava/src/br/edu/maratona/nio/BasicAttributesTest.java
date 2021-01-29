@@ -71,6 +71,8 @@ public class BasicAttributesTest
 				//alterando time do path
 				basicFileView.setTimes(lastModified, lastAccess, created);
 				
+				basicFiles = Files.readAttributes(path, BasicFileAttributes.class);
+				
 				System.out.println(basicFiles.creationTime());
 				System.out.println(basicFiles.lastAccessTime());
 				System.out.println(basicFiles.lastModifiedTime());
