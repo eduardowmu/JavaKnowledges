@@ -1,3 +1,1 @@
-Escrevendo uma mensagem no arquivo
-Escrevendo mais mensagem.
-Pulando uma linha
+ABCDE
