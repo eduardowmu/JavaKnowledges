@@ -1,6 +1,6 @@
 package br.edu.maratona.generics.classesgenericas;
 
-public class Carro 
+public class Carro
 {	private String nome;
 
 	public Carro(String nome) {this.nome = nome;}
