@@ -17,6 +17,8 @@ public class ThreadClassTeste
 		t2.start();
 		t3.start();
 		t4.start();
+		//tentando iniciar t1 novamente
+		//t1.start();
 	}
 }
 
