@@ -12,6 +12,9 @@ public class ThreadClassTeste
 		Thread t3 = new Thread(new ThreadExemploRunnable('C'));
 		Thread t4 = new Thread(new ThreadExemploRunnable('D'));
 		
+		/*como boas prática, sempre usar o atributo
+		 *estático*/
+		t4.setPriority(Thread.MAX_PRIORITY);
 		/*Método da interface runnable*/
 		t1.start();
 		t2.start();
@@ -50,12 +53,17 @@ class ThreadExemploRunnable implements Runnable
 
 	public ThreadExemploRunnable(char c) 
 	{this.c = c;}
-	
+	 
 	@Override public void run() 
 	{	System.out.println(Thread.currentThread().getName());
 		for(int i = 0; i < 1000; i++)
 		{	System.out.print(c);
 			if(i%100 == 0)	{System.out.println();}
+			//exemplo de uso do sleep
+			/*
+			 * try {Thread.sleep(1000);} catch (InterruptedException e)
+			 * {System.out.println(e.getMessage());}
+			 */
 		}
 	}
 }
