@@ -1,5 +1,7 @@
 package br.edu.maratona.threads;
 
+import javax.swing.JOptionPane;
+
 public class ThreadClassTeste 
 {	public static void main(String[] args) 
 	{	/*ThreadExemplo t1 = new ThreadExemplo('A');
@@ -17,9 +19,13 @@ public class ThreadClassTeste
 		t4.setPriority(Thread.MAX_PRIORITY);
 		/*Método da interface runnable*/
 		t1.start();
+		try {t1.join();}
+		catch (InterruptedException e) 
+		{JOptionPane.showMessageDialog(null, e);}
 		t2.start();
-		t3.start();
-		t4.start();
+		/*
+		 * t3.start(); t4.start();
+		 */
 		//tentando iniciar t1 novamente
 		//t1.start();
 	}
@@ -59,11 +65,12 @@ class ThreadExemploRunnable implements Runnable
 		for(int i = 0; i < 1000; i++)
 		{	System.out.print(c);
 			if(i%100 == 0)	{System.out.println();}
+			if(!Thread.currentThread().getName().equalsIgnoreCase("t4"))
+			{Thread.yield();}
 			//exemplo de uso do sleep
-			/*
-			 * try {Thread.sleep(1000);} catch (InterruptedException e)
-			 * {System.out.println(e.getMessage());}
-			 */
+			try {Thread.sleep(500);} 
+			catch (InterruptedException e)
+			{System.out.println(e.getMessage());}
 		}
 	}
 }
