@@ -1,14 +1,31 @@
 package br.edu.maratona.concorrencia;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 class Contador
 {	private int count;
 	private AtomicInteger atomicInteger = new AtomicInteger();
+	//classe Lock, cuja interface que esta classe implementa é
+	//ReentrantLock. O parâmetro "true" é para indicar o fernes.
+	//Se não tiver esse parametro booleano, por default é false.
+	private Lock lock = new ReentrantLock(true);
 	
 	public void increment()	
-	{	this.count++;
-		this.atomicInteger.getAndIncrement();
+	{	//obtendo o lock.
+		this.lock.lock();
+		//toda vez que obtemos o lock, também
+		//precisamos liberá-lo. Pelas boas práticas
+		//devemos fazer isso com try-finally
+		try
+		{	this.count++;
+			this.atomicInteger.getAndIncrement();
+		}
+		finally {this.lock.unlock();}
+		
+		//this.count++;
+		//this.atomicInteger.getAndIncrement();
 	}
 	
 	public int getCount()	{return this.count;}
@@ -29,7 +46,7 @@ class IncrementadorThread extends Thread
 	}
 }
 
-public class Concorrencia 
+public class Concorrencia
 {	public static void main(String[] args)
 	{	Contador c = new Contador();
 		IncrementadorThread ic1 = new IncrementadorThread(c);
