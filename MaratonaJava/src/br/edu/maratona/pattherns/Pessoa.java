@@ -37,7 +37,7 @@ public class Pessoa
 		}
 		
 		public PessoaBuilder meioNome(String meioNome)
-		{	this.nome = meioNome;
+		{	this.meioNome = meioNome;
 			return this;
 		}
 		
@@ -51,7 +51,7 @@ public class Pessoa
 			return this;
 		}
 		
-		public Pessoa criatePessoa()
+		public Pessoa createPessoa()
 		{	return new Pessoa(nome, ultimoNome, meioNome, 
 				apelido, nomePai);
 		}
@@ -71,4 +71,10 @@ public class Pessoa
 
 	public String getNomePai() {return nomePai;}
 	public void setNomePai(String nomePai) {this.nomePai = nomePai;}
+	
+	@Override public String toString() 
+	{	return "Pessoa [nome=" + nome + ", ultimoNome=" + ultimoNome 
+				+ ", meioNome=" + meioNome + ", apelido=" + apelido
+				+ ", nomePai=" + nomePai + "]";
+	}
 }

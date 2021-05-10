@@ -5,8 +5,8 @@ public class PessoaTeste
 	{	Pessoa pessoa = new Pessoa.PessoaBuilder()
 			.nome("Eduardo").apelido("Dudu")
 			.ultimoNome("Murakoshi").meioNome("Watanabe")
-			.nomePai("Osamu").criatePessoa();
+			.nomePai("Osamu").createPessoa();
 	
-		System.out.println(pessoa);
+		System.out.println(pessoa.toString());
 	}
 }
