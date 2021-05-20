@@ -23,7 +23,7 @@ public class StreamTeste
 		for(Pessoa pessoa:pessoas)
 		{	if(pessoa.getIdade() < 50)
 			{	nomes.add(pessoa.getNome());
-				if(nomes.size() >= 3)	break;
+				if(nomes.size() >= 4)	break;
 			}
 		}
 		System.out.println(nomes);
@@ -35,10 +35,29 @@ public class StreamTeste
 				//ordenando por nome
 				.sorted(Comparator.comparing(Pessoa::getNome))
 				//limitado a 3 pessoas
-				.limit(3)
+				.limit(4)
 				//coletando todos pelo nome em uma lista
 				.map(Pessoa::getNome).collect(Collectors.toList());
 		
 		System.out.println(nomes2);
+		
+		//com java 8, usando stream
+		Long qtd = pessoas.stream()
+				//irá fazer uma distinção de acordo com o filtro.
+				.distinct()
+				//filtrando pela idade < 50
+				.filter(p->p.getIdade() < 50)
+				//ordenando por nome
+				.sorted(Comparator.comparing(Pessoa::getNome))
+				//coletando todos pelo nome em uma lista
+				.map(Pessoa::getNome)
+				/*outro método, que equivale ao size() do collections, com a diferença
+				 *este retorna um Long e não in inteiro*/
+				.count();
+		
+		System.out.println(qtd);
+		
+		//Para fechar, um método do tipo Terminal
+		pessoas.stream().forEach(p->System.out.println(p.getNome()));
 	}
 }
