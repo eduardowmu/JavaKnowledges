@@ -36,6 +36,8 @@ public class StreamTeste
 				.sorted(Comparator.comparing(Pessoa::getNome))
 				//limitado a 3 pessoas
 				.limit(4)
+				//pulando um valor pelo index
+				.skip(1)
 				//coletando todos pelo nome em uma lista
 				.map(Pessoa::getNome).collect(Collectors.toList());
 		

@@ -53,4 +53,7 @@ public class Pessoa
 			return false;
 		return true;
 	}
+
+	@Override public String toString() 
+	{return "Pessoa [nome=" + nome + ", idade=" + idade + ", salario=" + salario + "]";}
 }
