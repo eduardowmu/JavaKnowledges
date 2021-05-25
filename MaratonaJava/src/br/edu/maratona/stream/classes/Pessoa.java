@@ -6,11 +6,20 @@ public class Pessoa
 {	private String nome;
 	private int idade;
 	private double salario;
+	private Genero genero;
+	private Maioridade maioridade;
 	
 	public Pessoa(String nome, int idade, double salario) 
 	{	this.nome = nome;
 		this.idade = idade;
 		this.salario = salario;
+	}
+	
+	public Pessoa(String nome, int idade, double salario, Genero genero) 
+	{	this.nome = nome;
+		this.idade = idade;
+		this.salario = salario;
+		this.genero = genero;
 	}
 
 	public String getNome() {return nome;}
@@ -22,13 +31,17 @@ public class Pessoa
 	public double getSalario() {return salario;}
 	public void setSalario(double salario) {this.salario = salario;}
 	
+	public Genero getGenero() {return genero;}
+
 	public static List<Pessoa> bancoDePessoas()
-	{	return asList(new Pessoa("Eduardo Murakoshi", 37, 4000.0),
-					  new Pessoa("Rodrigo Murakoshi", 41, 20000.0),
-					  new Pessoa("Osamu Murakoshi", 73, 10000.0),
-					  new Pessoa("Marie Murakoshi", 67, 10000.0),
-					  new Pessoa("Camila da Costa", 31, 4000.0),
-					  new Pessoa("Camila da Costa", 32, 5000.0));
+	{	return asList(new Pessoa("Eduardo Murakoshi", 37, 4000.0, Genero.MASCULINO),
+					  new Pessoa("Rodrigo Murakoshi", 41, 20000.0, Genero.MASCULINO),
+					  new Pessoa("Osamu Murakoshi", 73, 10000.0, Genero.MASCULINO),
+					  new Pessoa("Marie Murakoshi", 67, 10000.0, Genero.FEMININO),
+					  new Pessoa("Camila da Costa", 31, 4000.0, Genero.FEMININO),
+					  new Pessoa("Camila da Costa", 32, 5000.0, Genero.FEMININO),
+					  new Pessoa("Biatriz Murakoshi", 5, 0.0, Genero.FEMININO),
+					  new Pessoa("Mateus Murakoshi", 7, 0.0, Genero.MASCULINO));
 	}
 
 	@Override public int hashCode() 
