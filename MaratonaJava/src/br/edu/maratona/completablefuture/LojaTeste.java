@@ -2,6 +2,8 @@ package br.edu.maratona.completablefuture;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import br.edu.maratona.completablefuture.classes.Loja;
 
@@ -34,12 +36,16 @@ public class LojaTeste
 		System.out.println("Tempo invocação: " + tempoFinal);
 		//enrolando();
 		try 
-		{	System.out.println(preco1.get());
-			System.out.println(preco2.get());
-			System.out.println(preco3.get());
-			System.out.println(preco4.get());
+		{	//System.out.println(preco1.get());
+//			System.out.println(preco2.get());
+//			System.out.println(preco3.get());
+//			System.out.println(preco4.get());
+			System.out.println(preco1.get(3, TimeUnit.SECONDS));
+			System.out.println(preco2.get(3, TimeUnit.SECONDS));
+			System.out.println(preco3.get(3, TimeUnit.SECONDS));
+			System.out.println(preco4.get(3, TimeUnit.SECONDS));
 		} 
-		catch (InterruptedException | ExecutionException e) 
+		catch (InterruptedException | ExecutionException | TimeoutException e) 
 		{System.out.println(e.getMessage());}
 		
 		System.out.println("Tempo final: " + (System.currentTimeMillis() - start));

@@ -1,6 +1,7 @@
 package br.edu.maratona.completablefuture.classes;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,8 @@ public class Loja
 	
 	private double calcularPreco() throws InterruptedException
 	{	this.delay();
+		//simulando uma exceção
+		//System.out.println(1/0);
 		return ThreadLocalRandom.current().nextDouble() * 100;
 	}
 	private static void delay() throws InterruptedException	
