@@ -7,25 +7,37 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class Loja 
-{	public double getPreco() throws InterruptedException
+{	private String nome;
+
+	public Loja(){}
+	
+	public Loja(String nome)	{this.nome = nome;}
+	
+	public String getNome() {return nome;}
+	public void setNome(String nome) {this.nome = nome;}
+
+	public double getPreco()
 	{return this.calcularPreco();}
 
-	public Future<Double> getPrecoAsync()
+	public Future<Double> getPrecoAsync()  throws InterruptedException
 	{	CompletableFuture<Double> precoFuturo = new CompletableFuture<>();
 		new Thread(() -> {
-			try {precoFuturo.complete(calcularPreco());} 
-			catch (InterruptedException e) 
-			{System.out.println(e.getMessage());}
+			precoFuturo.complete(calcularPreco()); 
 		}).start();
 		return precoFuturo;
 	}
 	
-	private double calcularPreco() throws InterruptedException
+	public Future<Double> getPrecoSupplyAsyncTunado()
+	{return CompletableFuture.supplyAsync(this::calcularPreco);}
+	
+	private double calcularPreco()
 	{	this.delay();
 		//simulando uma exceção
 		//System.out.println(1/0);
 		return ThreadLocalRandom.current().nextDouble() * 100;
 	}
-	private static void delay() throws InterruptedException	
-	{TimeUnit.SECONDS.sleep(2);}
+	private static void delay()
+	{	try {TimeUnit.SECONDS.sleep(1);} 
+		catch (InterruptedException e) {System.out.println(e.getMessage());}
+	}
 }
