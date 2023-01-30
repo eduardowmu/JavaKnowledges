@@ -13,7 +13,7 @@ public class StreamTeste6Collectors
 		//se quisermos contar uma quantidade de pessoas da lista
 		System.out.println(pessoas.size());//OU
 		System.out.println(pessoas.stream().count());//OU, usando Collectors
-		System.out.println(pessoas.stream().collect(Collectors.counting()));
+		System.out.println(pessoas.stream().collect(Collectors.counting()) + "");
 		
 		//encontrando a pessoa com valor maior de salario
 		System.out.println(pessoas.stream().max(Comparator.comparing(
@@ -32,17 +32,17 @@ public class StreamTeste6Collectors
 		//soma dos salarios
 		System.out.println(pessoas.stream().mapToDouble(Pessoa::getSalario).sum());//OU
 		System.out.println(pessoas.stream().collect(Collectors.summingDouble(
-				Pessoa::getSalario)));
+				Pessoa::getSalario)) + "");
 		
 		//media, cujo metodo retorna um Optional.
 		System.out.println(pessoas.stream().mapToDouble(Pessoa::getSalario)
 				.average().getAsDouble());//OU, para não retornar um Optional
 		System.out.println(pessoas.stream().collect(Collectors.averagingDouble(
-				Pessoa::getSalario)));
+				Pessoa::getSalario)) + "");
 		
 		//summarizing de Collectors
 		System.out.println(pessoas.stream().collect(Collectors.summarizingDouble(
-				Pessoa::getSalario)));
+				Pessoa::getSalario)) + "");
 		
 		//concatenações de Strings
 		System.out.println(pessoas.stream().map(Pessoa::getNome).collect(
